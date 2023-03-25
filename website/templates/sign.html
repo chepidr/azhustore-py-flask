@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% block title %}Вход{% endblock %}
+
+{% block navbar %}
+<nav class="navbar navbar-expand">
+    <div class="container">
+        
+
+        <ul class="navbar-nav mr-auto mb-2 w-100 nav-justified" data-mdb-right="true">
+
+                <li class="nav-item mr-0">
+                    <a href="index.php" class="nav-link active">Вход</a>
+                </li>
+                
+        </ul>
+        
+
+    </div>
+</nav>
+{% endblock %}
+
+{% block intro_type %}details{% endblock %}
+
+{% block intro_content_type %}goods{% endblock %}
+
+{% block intro_title %}{% endblock %}
+
+{% block content %}
+<section class="sign">
+    <div class="container ">
+        <div class=" py-5 align-middle">
+            <a class="row justify-content-center">
+                <img src="../static/images/logo.png" class="col-3" alt="">
+            </a>
+            <ul class="nav nav-tabs justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#" id="signup">Регистрация</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" id="signin" >Войти</a>
+                </li>
+            </ul>
+
+            <div class="tabs__body align-baseline">
+                <div id="tab_01" class="tabs__block tabs__block-active">
+                    <form action="/sign" method="POST">
+
+                        <div class="form-group mt-3">
+                            <label for="exampleInputName1"  class="input__label">Имя</label>
+                            <input type="password" name="password" class="form-control form-control-lg" id="exampleInputName1" placeholder="Введите ваше имя">
+                        </div>
+
+                        <div class="form-group mt-3">
+                            <label for="exampleInputPhone1"  class="input__label">Номер телефона</label>
+                            <input type="number" name="phone" class="form-control form-control-lg" id="exampleInputPhone1" placeholder="Введите ваш номер">
+                        </div>
+
+                        <div class="form-group mt-3">
+                            <label for="exampleInputPassword1"  class="input__label">Пароль</label>
+                            <input type="password" name="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Пароль">
+                        </div>
+
+                        <div class="form-group mt-3">
+                            <label for="exampleInputConfirmPassword1"  class="input__label">Подтвердите пароль</label>
+                            <input type="password" name="confirm_password" class="form-control form-control-lg" id="exampleInputConfirmPassword1" placeholder="Пароль">
+                        </div>
+
+                        <input type="hidden" name="sign_type" value="sign_up">
+
+                        <button type="submit" class="btn btn-primary border-0 mt-4 btn-lg" style="background-color: #686da1;">Зарегестрироваться</button>
+                        <div class="sign__output">
+                            
+                        </div>
+                    </form>
+                    
+
+
+                </div>
+
+                <div id="tab_02" class="tabs__block">
+                    <form class="" action="/sign" method="POST">
+                        <div class="form-group mt-3">
+                            <label for="exampleInputPhone1"  class="input__label">Номер телефона</label>
+                            <input type="number" name="phone" class="form-control form-control-lg" id="exampleInputPhone1" placeholder="Введите ваш номер">
+                        </div>
+
+                        <div class="form-group mt-3">
+                            <label for="exampleInputPassword1" class="input__label">Пароль</label>
+                            <input type="password" name="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Пароль">
+                        </div>
+
+                        <input type="hidden" name="sign_type" value="sign_in">
+                        
+                        <button type="submit" class="btn btn-primary border-0 mt-4 btn-lg" style="background-color: #686da1;">Войти</button>
+                        <div class="sign__output">
+                            
+                        </div>
+                    </form>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

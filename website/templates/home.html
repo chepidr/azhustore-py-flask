@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% block title %}Главная{% endblock %}
+
+{% block navbar %}
+<nav class="navbar navbar-expand-lg">
+    <div class="container ">
+        <a href="main.php" class="navbar-brand">
+            <img src="../static/images/logo.png" class="logo" alt="" height='70'>
+        </a>
+
+
+
+        <button class='navbar-toggler custom-toggler' type='button' data-bs-toggle='collapse'
+            data-bs-target='#navbarContent' aria-controls='navbarContent' aria-expanded='false'>
+            <span class='navbar-toggler-icon'></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarContent">
+            <ul class="navbar-nav mr-auto mb-2 w-100 nav-justified" data-mdb-right="true">
+                <li class="nav-item">
+                    <a href="/" class='nav-link active'>Главная</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/clothes" class='nav-link'>Одежда</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/handbags" class='nav-link'>Сумки</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/perfumes" class='nav-link'>Парфюмы</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://www.instagram.com/azhu.store/" id="icon" class='nav-link'><i
+                            class="bi bi-instagram"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a href="/cart" class='nav-link' id="icon"><i class="bi bi-bag"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a href="/history" class='nav-link' id="icon"><i class="bi bi-clock-history"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a href="/logout" class='nav-link' id="icon"><i
+                            class="bi bi-box-arrow-left"></i></a>
+                </li>
+
+            </ul>
+        </div>
+
+    </div>
+</nav>
+{% endblock %}
+
+{% block intro_type %}{% endblock %}
+
+{% block content %}
+<section class="about">
+    <div class="container">
+        <div class="about__content col">
+            <img src="../static/images/“.png" alt="" class="img-fluid col-1">
+            <p class="about__text" style="font-size:2vw;">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. In arcu nibh vitae amet. Ipsum, pharetra
+                donec ornare velit. Id at quisque accumsan risus ac ipsum ut. Sit elit, facilisi proin non malesuada
+                sociis tristique. Viverra augue lorem ut quisque quam tortor
+            </p>
+            <p class="about__title" style="font-size:3vw;">
+                Товары:
+            </p>
+        </div>
+
+
+        <div class="products">
+            <a class="products__item col-3" href="odezhda.php">
+                <img src="../static/images/clothes.jpg" class="img-fluid" alt="">
+
+                <div class="products__title text-justify">Одежда</div>
+            </a>
+            <a class="products__item col-3" href="sumki.php">
+                <img src="../static/images/handbags.jpg" class="img-fluid" alt="">
+
+                <div class="products__title text-justify">Сумки</div>
+            </a>
+            <a class="products__item col-3" href="perfumes.php">
+
+                <img src="../static/images/perfumes.jpg" class="img-fluid" alt="">
+
+                <div class="products__title text-justify">Парфюмы</div>
+            </a>
+        </div>
+
+
+    </div>
+</section>
+{% endblock %}
