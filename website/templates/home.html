@@ -4,8 +4,8 @@
 {% block navbar %}
 <nav class="navbar navbar-expand-lg">
     <div class="container ">
-        <a href="main.php" class="navbar-brand">
-            <img src="../static/images/logo.png" class="logo" alt="" height='70'>
+        <a href="/" class="navbar-brand">
+            <img src="https://ik.imagekit.io/fdmzvitxq/azhustore/tr:bl-80/logo.png" class="logo" height='70' alt="">
         </a>
 
 
@@ -39,11 +39,16 @@
                 <li class="nav-item">
                     <a href="/history" class='nav-link' id="icon"><i class="bi bi-clock-history"></i></a>
                 </li>
-                <li class="nav-item">
-                    <a href="/logout" class='nav-link' id="icon"><i
-                            class="bi bi-box-arrow-left"></i></a>
-                </li>
-
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a href="/logout" class='nav-link' id="icon"><i
+                                class="bi bi-box-arrow-left" style="color: red;"></i></a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a href="/sign" class='nav-link' id="icon"><i style="color: #16DE16;" class="bi bi-box-arrow-in-right"></i></a>
+                    </li>
+                {% endif %}
             </ul>
         </div>
 
@@ -57,7 +62,7 @@
 <section class="about">
     <div class="container">
         <div class="about__content col">
-            <img src="../static/images/“.png" alt="" class="img-fluid col-1">
+            <img src="https://ik.imagekit.io/fdmzvitxq/azhustore/tr:bl-80/quote.png" alt="" class="img-fluid col-1">
             <p class="about__text" style="font-size:2vw;">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. In arcu nibh vitae amet. Ipsum, pharetra
                 donec ornare velit. Id at quisque accumsan risus ac ipsum ut. Sit elit, facilisi proin non malesuada
@@ -69,20 +74,19 @@
         </div>
 
 
-        <div class="products">
+        <div class="products row justify-content-around">
             <a class="products__item col-3" href="odezhda.php">
-                <img src="../static/images/clothes.jpg" class="img-fluid" alt="">
+                <img src="https://ik.imagekit.io/fdmzvitxq/azhustore/tr:bl-80/clothes.jpg" class="img-fluid" alt="">
 
                 <div class="products__title text-justify">Одежда</div>
             </a>
             <a class="products__item col-3" href="sumki.php">
-                <img src="../static/images/handbags.jpg" class="img-fluid" alt="">
+                <img src="https://ik.imagekit.io/fdmzvitxq/azhustore/tr:bl-80/handbags.jpg" class="img-fluid" alt="">
 
                 <div class="products__title text-justify">Сумки</div>
             </a>
             <a class="products__item col-3" href="perfumes.php">
-
-                <img src="../static/images/perfumes.jpg" class="img-fluid" alt="">
+                <img src="https://ik.imagekit.io/fdmzvitxq/azhustore/tr:bl-80/perfumes.jpg" class="img-fluid" alt="">
 
                 <div class="products__title text-justify">Парфюмы</div>
             </a>

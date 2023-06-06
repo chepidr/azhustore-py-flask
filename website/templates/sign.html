@@ -2,18 +2,51 @@
 {% block title %}Вход{% endblock %}
 
 {% block navbar %}
-<nav class="navbar navbar-expand">
-    <div class="container">
-        
+<script src="{{ url_for('static', filename='js/sign.js') }}"></script>
+<nav class="navbar navbar-expand-lg">
+    <div class="container ">
+        <a href="/" class="navbar-brand">
+            <img src="https://ik.imagekit.io/fdmzvitxq/azhustore/tr:bl-80/logo.png" class="logo" height='70' alt="">
+        </a>
 
-        <ul class="navbar-nav mr-auto mb-2 w-100 nav-justified" data-mdb-right="true">
 
-                <li class="nav-item mr-0">
-                    <a href="index.php" class="nav-link active">Вход</a>
+
+        <button class='navbar-toggler custom-toggler' type='button' data-bs-toggle='collapse'
+            data-bs-target='#navbarContent' aria-controls='navbarContent' aria-expanded='false'>
+            <span class='navbar-toggler-icon'></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarContent">
+            <ul class="navbar-nav mr-auto mb-2 w-100 nav-justified" data-mdb-right="true">
+                <li class="nav-item">
+                    <a href="/" class='nav-link'>Главная</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/clothes" class='nav-link'>Одежда</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/handbags" class='nav-link'>Сумки</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/perfumes" class='nav-link'>Парфюмы</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://www.instagram.com/azhu.store/" id="icon" class='nav-link'><i
+                            class="bi bi-instagram"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a href="/cart" class='nav-link' id="icon"><i class="bi bi-bag"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a href="/history" class='nav-link' id="icon"><i class="bi bi-clock-history"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a href="/sign" class='nav-link active' id="icon"><i style="color: #16DE16;"
+                            class="bi bi-box-arrow-in-right"></i></a>
                 </li>
                 
-        </ul>
-        
+            </ul>
+        </div>
 
     </div>
 </nav>
@@ -30,14 +63,15 @@
     <div class="container ">
         <div class=" py-5 align-middle">
             <a class="row justify-content-center">
-                <img src="../static/images/logo.png" class="col-3" alt="">
+                <img src="https://ik.imagekit.io/fdmzvitxq/azhustore/tr:bl-80/logo.png" class="col-3" alt="">
             </a>
+            
             <ul class="nav nav-tabs justify-content-center">
                 <li class="nav-item">
-                    <a class="nav-link active" href="#" id="signup">Регистрация</a>
+                    <a class="nav-link active"  id="signup">Регистрация</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" id="signin" >Войти</a>
+                    <a class="nav-link"  id="signin" >Войти</a>
                 </li>
             </ul>
 
@@ -46,13 +80,18 @@
                     <form action="/sign" method="POST">
 
                         <div class="form-group mt-3">
+                            <label for="exampleInputName1"  class="input__label">Почта</label>
+                            <input type="text" name="email" class="form-control form-control-lg" id="exampleInputName1" placeholder="Введите вашу почту">
+                        </div>
+
+                        <div class="form-group mt-3">
                             <label for="exampleInputName1"  class="input__label">Имя</label>
-                            <input type="password" name="password" class="form-control form-control-lg" id="exampleInputName1" placeholder="Введите ваше имя">
+                            <input type="text" name="name" class="form-control form-control-lg" id="exampleInputName1" placeholder="Введите ваше имя">
                         </div>
 
                         <div class="form-group mt-3">
                             <label for="exampleInputPhone1"  class="input__label">Номер телефона</label>
-                            <input type="number" name="phone" class="form-control form-control-lg" id="exampleInputPhone1" placeholder="Введите ваш номер">
+                            <input type="tel" data-tel-input name="phone" class="form-control form-control-lg" id="exampleInputPhone1" placeholder="Введите ваш номер">
                         </div>
 
                         <div class="form-group mt-3">
@@ -68,9 +107,7 @@
                         <input type="hidden" name="sign_type" value="sign_up">
 
                         <button type="submit" class="btn btn-primary border-0 mt-4 btn-lg" style="background-color: #686da1;">Зарегестрироваться</button>
-                        <div class="sign__output">
-                            
-                        </div>
+                        
                     </form>
                     
 
@@ -80,8 +117,8 @@
                 <div id="tab_02" class="tabs__block">
                     <form class="" action="/sign" method="POST">
                         <div class="form-group mt-3">
-                            <label for="exampleInputPhone1"  class="input__label">Номер телефона</label>
-                            <input type="number" name="phone" class="form-control form-control-lg" id="exampleInputPhone1" placeholder="Введите ваш номер">
+                            <label for="exampleInputName1"  class="input__label">Почта</label>
+                            <input type="text" name="email" class="form-control form-control-lg" id="exampleInputName1" placeholder="Введите вашу почту">
                         </div>
 
                         <div class="form-group mt-3">
@@ -92,11 +129,9 @@
                         <input type="hidden" name="sign_type" value="sign_in">
                         
                         <button type="submit" class="btn btn-primary border-0 mt-4 btn-lg" style="background-color: #686da1;">Войти</button>
-                        <div class="sign__output">
-                            
-                        </div>
+                        
                     </form>
-                    
+                    <a href="/reset" class="link-info">Забыли пароль?</a>
                 </div>
             </div>
         </div>

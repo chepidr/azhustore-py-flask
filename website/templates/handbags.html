@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+{% block title %}Одежда{% endblock %}
+
+{% block intro_title %}Одежда{% endblock %}
+
+{% block navbar %}
+<nav class="navbar navbar-expand-lg">
+    <div class="container ">
+        <a href="/" class="navbar-brand">
+            <img src="https://ik.imagekit.io/fdmzvitxq/azhustore/tr:bl-80/logo.png" class="logo" height='70' alt="">
+        </a>
+
+
+
+        <button class='navbar-toggler custom-toggler' type='button' data-bs-toggle='collapse'
+            data-bs-target='#navbarContent' aria-controls='navbarContent' aria-expanded='false'>
+            <span class='navbar-toggler-icon'></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarContent">
+            <ul class="navbar-nav mr-auto mb-2 w-100 nav-justified" data-mdb-right="true">
+                <li class="nav-item">
+                    <a href="/" class='nav-link'>Главная</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/clothes" class='nav-link '>Одежда</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/handbags" class='nav-link active'>Сумки</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/perfumes" class='nav-link'>Парфюмы</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://www.instagram.com/azhu.store/" id="icon" class='nav-link'><i
+                            class="bi bi-instagram"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a href="/cart" class='nav-link' id="icon"><i class="bi bi-bag"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a href="/history" class='nav-link' id="icon"><i class="bi bi-clock-history"></i></a>
+                </li>
+                {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a href="/logout" class='nav-link' id="icon"><i class="bi bi-box-arrow-left"
+                            style="color: red;"></i></a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a href="/sign" class='nav-link' id="icon"><i style="color: #16DE16;"
+                            class="bi bi-box-arrow-in-right"></i></a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+
+    </div>
+</nav>
+{% endblock %}
+
+{% block intro_type %}clothes{% endblock %}
+
+{% block intro_content_type %}goods{% endblock %}
+
+{% block content %}
+<section class="tovary">
+    <div class="container">
+        
+        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            <i class="bi bi-funnel-fill"></i>
+        </button>
+        
+        <div id="collapseExample" class="collapse">
+          <div class="card card-body ">
+            <form>
+                <select name="sort" id="sort" class="form-select mb-2">
+                    <option value="oldest" {% if request.args.get('sort','oldest')=='oldest' %} selected {% endif %}>Сортировка</option>
+                    <option value="price-low-high" {% if request.args.get('sort','oldest')=='price-low-high'%} selected {% endif %}>ЦЕНА: $–$$$</option>
+                    <option value="price-high-low" {% if request.args.get('sort','oldest')=='price-high-low' %} selected {% endif %}>ЦЕНА: $$$–$</option>
+                    <option value="newest" {% if request.args.get('sort','oldest')=='newest' %} selected {% endif %}>Новые</option>
+                </select>
+  
+                <br>
+                <button type="submit" class="btn btn-outline-info"><i class="bi bi-arrow-right"></i></button>
+            </form>
+          </div>
+        </div>
+
+        <div class="tovary__row row justify-content-around" id="products">
+            {% for product in products.items %}
+            <div class="col-lg-3 col-6 p-1">
+                <div class="card card-good">
+                    <img src="{{ product.image }}" alt="" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ product.name }}</h5>
+                        <p class="card-text">
+                            <div class="tovary__cost">{{ product.price }} Tg</div>
+                    </div>
+                </div>
+            </div>
+
+            {% endfor %}
+        </div>
+        <div class="d-flex justify-content-center">
+            {% for page_num in products.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+                {% if page_num %}
+                    {% if products.page == page_num %}
+                    <a class="btn btn-info m-3" href="{{ url_for('views.clothes', page=page_num,sort=request.args.get('sort','oldest'),xs=request.args.get('xs','false'),s=request.args.get('s','false'),m=request.args.get('m','false'),l=request.args.get('l','false'),xl=request.args.get('xl','false')) }}">{{ page_num }}</a>
+                    {% else %}
+                    <a class="btn btn-outline-info m-3" href="{{ url_for('views.clothes', page=page_num,sort=request.args.get('sort','oldest'),xs=request.args.get('xs','false'),s=request.args.get('s','false'),m=request.args.get('m','false'),l=request.args.get('l','false'),xl=request.args.get('xl','false')) }}">{{ page_num }}</a>
+                    {% endif %}
+                {% else %}
+                <p style="transform: translate(0,60%);">...</p>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block footer_type %}goods{% endblock %}
+
+{% block footer_logo %}logo-dark.png{% endblock %}
